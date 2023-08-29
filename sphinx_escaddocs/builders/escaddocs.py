@@ -13,15 +13,15 @@ from sphinx.application import Sphinx
 
 from sphinx.builders.singlehtml import SingleFileHTMLBuilder
 
-from sphinx_simplepdf.builders.debug import DebugPython
+from sphinx_escaddocs.builders.debug import DebugPython
 
 from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
 
 
-class SimplePdfBuilder(SingleFileHTMLBuilder):
-    name = "simplepdf"
+class EscadDocsBuilder(SingleFileHTMLBuilder):
+    name = "escaddocs"
     format = "html"  # Must be html instead of "pdf", otherwise plantuml has problems
     file_suffix = ".pdf"
     links_suffix = None
@@ -56,7 +56,7 @@ class SimplePdfBuilder(SingleFileHTMLBuilder):
         logger.info("Generating css files from scss-templates")
         css_folder = os.path.join(self.app.outdir, f"_static")
         scss_folder = os.path.join(
-            os.path.dirname(__file__), "..", "themes", "simplepdf_theme", "static", "styles", "sources"
+            os.path.dirname(__file__), "..", "themes", "escaddocs_theme", "static", "styles", "sources"
         )
         sass.compile(
             dirname=(scss_folder, css_folder),
@@ -203,7 +203,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value("simplepdf_theme", "simplepdf_theme", "html", types=[str])
     app.add_config_value("simplepdf_theme_options", {}, "html", types=[dict])
     app.add_config_value("simplepdf_sidebars", {"**": ["localtoc.html"]}, "html", types=[dict])
-    app.add_builder(SimplePdfBuilder)
+    app.add_builder(EscadDocsBuilder)
 
     return {
         "parallel_read_safe": True,

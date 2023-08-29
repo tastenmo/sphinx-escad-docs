@@ -10,22 +10,21 @@ README_PATH = os.path.join(directory, 'README.rst')
 
 
 setup(
-    name='sphinx-simplepdf',
-    version='1.6.0',
-    url='https://sphinx-simplepdf.readthedocs.io',
-    download_url='https://github.com/useblocks/sphinx-simplepdf',
+    name='sphinx-escad-docs',
+    version='0.0.1',
+    download_url='https://github.com/tastenmo/sphinx-escad-docs.git',
     license='MIT',
-    author='team useblocks',
-    author_email='info@useblocks.com',
+    author='Martin Heubuch',
+    author_email='martin.heubuch@escad.de',
     description='An easy to use PDF Builder for Sphinx with a modern PDF-Theme.',
     long_description=open(README_PATH, encoding='utf-8').read(),
     zip_safe=False,
-    packages=['sphinx_simplepdf',
-              'sphinx_simplepdf.builders',
-              'sphinx_simplepdf.directives',
-              'sphinx_simplepdf.themes/simplepdf_theme',
+    packages=['sphinx_escaddocs',
+              'sphinx_escaddocs.builders',
+              'sphinx_escaddocs.directives',
+              'sphinx_escaddocs.themes/escaddocs_theme',
               ],
-    package_data={'sphinx_simplepdf/themes/simplepdf_theme': [
+    package_data={'sphinx_escaddocs/themes/escaddocs_theme': [
         'theme.conf',
         '*.html',
         'static/styles/*.css',
@@ -36,10 +35,10 @@ setup(
     # See http://www.sphinx-doc.org/en/stable/theming.html#distribute-your-theme-as-a-python-package
     entry_points={
         'sphinx.html_themes': [
-            'simplepdf_theme = sphinx_simplepdf.themes.simplepdf_theme',
+            'escaddocs_theme = sphinx_escaddocs.themes.escaddocs_theme',
         ],
         'sphinx.builders': [
-            'simplepdf = sphinx_simplepdf.builders.simplepdf'
+            'escaddocs = sphinx_escaddocs.builders.escaddocs',
         ]
     },
     install_requires=[

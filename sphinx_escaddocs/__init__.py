@@ -1,6 +1,6 @@
-from sphinx_simplepdf.directives.ifbuilder import IfBuilderDirective
-from sphinx_simplepdf.directives.ifinclude import IfIncludeDirective
-from sphinx_simplepdf.directives.pdfinclude import PdfIncludeDirective
+from sphinx_escaddocs.directives.ifbuilder import IfBuilderDirective
+from sphinx_escaddocs.directives.ifinclude import IfIncludeDirective
+from sphinx_escaddocs.directives.pdfinclude import PdfIncludeDirective
 
 
 def setup(app):
