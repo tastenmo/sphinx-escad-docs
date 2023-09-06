@@ -14,9 +14,9 @@ import datetime
 sys.path.append(os.path.dirname(__file__))  # Needed for test_py_module
 
 # project = 'Sphinx-SimplePDF-DEMO'
-project = 'Sphinx-SimplePDF-DEMO'
-copyright = '2022, team useblocks'
-author = 'team useblocks'
+project = 'ESCAD Document template'
+copyright = '2023, ESCAD Automation GmbH'
+author = 'Martin Heubuch'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -35,27 +35,45 @@ version = "1.0"  # Will not be raised
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+html_context = {                                                                 
+    'authors' : [
+        ("Martin Heubuch", "Softwareentwicklung", "martin.heubuch@escad.de"),
+        ("Thomas Strohmaier", "Softwareentwicklung", "thomas.strohmaier@escad.de"),
+        ("", "", "")
+    ], 
+    'reviewer' : [
+        ("Manfred Hirt", "Bereichsleiter Steuerungstechnik ", "manfred.hirt@escad.de"),
+        ("Peter Herr", "Stv. Abteilungsleiter Software", "peter.herr@escad.de"),
+        ("", "", "")
+    ],
+    'customer_approver'  : [
+        ("", "", ""),
+        ("", "", ""),
+        ("", "", "")
+    ]                                
+}  
+
 plantuml_output_format = "svg_img"
 
 simplepdf_debug = True
 
-simplepdf_file_name = 'Sphinx-SimplePDF-DEMO.pdf'
+simplepdf_file_name = 'ESCAD-Document-template.pdf'
 
 simplepdf_vars = {
-    'cover-overlay': 'rgba(26, 150, 26, 0.7)',
-    'primary-opaque': 'rgba(26, 150, 26, 0.7)',
-    'cover-bg': 'url(frog.jpg) no-repeat center',
-    'primary': '#1a961a',
-    'secondary': '#379683',
+    'cover-overlay': 'rgba(84, 84, 84, 0.7)',
+    'primary-opaque': 'rgba(211, 77, 40, 0.7)',
+   # 'cover-bg': 'url(frog.jpg) no-repeat center',
+    'primary': '#d34c27',
+    'secondary': '#54bfd3',
     'cover': '#ffffff',
     'white': '#ffffff',
     'links': '#1a961a',
-    'top-left-content': '"Header left"',
-    'top-center-content': '"Header center"',
-    'top-right-content': '"Header right"',
-    'bottom-left-content': 'counter(page)',
-    'bottom-center-content': '"Bottom center"',
-    'bottom-right-content': 'string(heading)',
+    'top-left-content': 'url(REscad.svg) no-repeat left center',
+    'top-center-content': '"ESCAD Document template"',
+    'top-right-content': '',
+    'bottom-left-content': '"ESCAD-Document-template.pdf"',
+    'bottom-center-content': '',
+    'bottom-right-content': 'counter(page)',
 }
 
 # -- Options for HTML output -------------------------------------------------

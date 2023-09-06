@@ -36,12 +36,13 @@
   padding-top: 1em;
 
   @top-left {
-    background: $primary;
-    color: $white;
     content: $top-left-content;
     height: 1cm;
-    text-align: center;
-    width: 1cm;
+    text-align: left;
+    width: 100%;
+    border-bottom-color: $primary-opaque;
+    border-bottom-style: solid;
+    border-bottom-width: 0.05cm;
   }
 
   @top-center {
