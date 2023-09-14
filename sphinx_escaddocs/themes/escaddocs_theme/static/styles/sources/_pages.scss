@@ -145,23 +145,23 @@
   }
 }
 
-//@if not $nocover {
+@if not $nocover {
 
-//@page:first {
-//  background: $cover-bg;
-//  background-size: cover;
-//  margin: 0;
-//}
+@page:first {
+  background: $cover-bg;
+  background-size: 100%;
+  margin: 0;
+}
 
-//}
+}
 
-//@media screen {
-//  #cover {
-//    background: $cover-bg;
-//    background-size: cover;
-//    margin: 0;
-//  }
-//}
+@media screen {
+  #cover {
+    background: $cover-bg;
+    background-size: 100%;
+    margin: 0;
+  }
+}
 
 @page chapter {
   background: $primary;

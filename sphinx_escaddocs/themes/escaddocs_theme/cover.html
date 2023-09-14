@@ -7,13 +7,13 @@
     </div>
 
 
-    <div class="title">
-      <h1 class="title-cover">{{ project|striptags|e }}</h1>
-    </div>
+    
+    <h1 class="title-cover">{{ project|striptags|e }}</h1>
+    
 
-    <p class="subtitle-cover">Version {{ version }}</p>
+    <p class="subtitle-cover">{{ cover_meta_data }}</p>
     <span class="meta">
-      {{ cover_meta_data }}
+      Version {{ version }}
     </span>
 
 

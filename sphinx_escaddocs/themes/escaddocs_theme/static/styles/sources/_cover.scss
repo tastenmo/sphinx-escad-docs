@@ -5,8 +5,10 @@
     align-content: space-between;
     display: flex;
     flex-wrap: wrap;
-    
+
     margin-top: 10mm;
+
+    
 
     h1 {
         font-family: "Work Sans", sans-serif;
@@ -24,7 +26,10 @@
     .container {
 
         width: 100%;
-        
+        height: 100%;
+
+        break-inside: avoid;
+
         //background: $cover-overlay;
         .logo {
 
@@ -33,48 +38,44 @@
             width: 100%;
             height: 16mm;
             margin-left: 2cm;
-            
+
         }
 
-        .title {
-                width: 100%;
-                //height: ;
+        .title-cover {
+                width: auto;
 
-                background: $cover-bg;
-                background-size: 100%;
-   
+                margin-top: 50%;
+                margin-left: 2cm;
+ 
+                padding-left: 15px;
+                padding-right: 15px;
 
-                .title-cover {
-                    
-                    bottom: 1cm;
-                    left: 2cm;
-
-                    font-family: "Helvetica Neue LT Bold Condensed", sans-serif;
-                    font-size: 40pt;
-                    text-transform: uppercase;
-                    color: $primary;
-                    background-color: white;
-                
-                }
-            }
-
-            .subtitle-cover {
-                
                 font-family: "Helvetica Neue LT Bold Condensed", sans-serif;
-                font-size: 30pt;
+                font-size: 40pt;
                 text-transform: uppercase;
-                margin-top: 5pt;
-        
+                color: $primary;
+                background-color: white;
+
             }
 
-            .meta {
-                
-                font-family: 'Helvetica Neue LT Roman';
-                font-size: 18pt;
-                margin-top: 12pt;
-                margin-bottom: 0;
-                
-            }
+        .subtitle-cover {
+
+            font-family: "Helvetica Neue LT Bold Condensed", sans-serif;
+            font-size: 30pt;
+            text-transform: uppercase;
+            margin-top: 0.5cm;
+            margin-left: 2cm;
+
+        }
+
+        .meta {
+
+            font-family: 'Helvetica Neue LT Roman';
+            font-size: 18pt;
+            margin-top: 1cm;
+            margin-left: 2cm;
+
+        }
 
 
         .cover-footer {
@@ -85,6 +86,7 @@
             bottom: 30pt;
             color: $white;
             width: 100%;
+
             p {
                 width: 80%;
                 margin: 0 auto;
