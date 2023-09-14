@@ -10,9 +10,9 @@ import os
 import sphinx
 import datetime
 
-project = 'Sphinx-SimplePDF'
-copyright = '2022, team useblocks'
-author = 'team useblocks'
+project = 'Sphinx-Escad-docs'
+copyright = '2023, ESCAD Automation GmbH'
+author = 'Martin Heubuch'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -20,11 +20,11 @@ author = 'team useblocks'
 extensions = [
     'sphinx_simplepdf',
     'sphinxcontrib.plantuml',
-    'sphinxcontrib.needs',
+    'sphinx_needs',
     'sphinx_copybutton',
 ]
 
-version = "1.6.0"
+version = "0.1"
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -34,8 +34,20 @@ local_plantuml_path = os.path.join(os.path.dirname(__file__), "utils", "plantuml
 plantuml = f"java -Djava.awt.headless=true -jar {local_plantuml_path}"
 
 simplepdf_vars = {
-    'cover-overlay': 'rgba(150, 26, 26, 0.7)',
-    'cover-bg': 'url(cover-bg.jpg) no-repeat center'
+    'cover-overlay': 'rgba(84, 84, 84, 0.7)',
+    'primary-opaque': 'rgba(211, 77, 40, 0.7)',
+    'cover-bg': 'url(230117_Header_ESCAD_Deutschland.jpg) no-repeat center',
+    'primary': '#d34c27',
+    'secondary': '#54bfd3',
+    'cover': '#ffffff',
+    'white': '#ffffff',
+    'links': '#1a961a',
+    'top-left-content': 'url(REscad.svg) no-repeat left center',
+    'top-center-content': '"ESCAD Document template"',
+    'top-right-content': '',
+    'bottom-left-content': '"ESCAD-Document-template.pdf"',
+    'bottom-center-content': '',
+    'bottom-right-content': 'counter(page)',
 }
 
 # use this to force using the weasyprint python API instead of building via the binary
@@ -45,7 +57,8 @@ simplepdf_vars = {
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 #html_theme = 'sphinx_immaterial'
-html_theme = 'alabaster'
+#html_theme = 'alabaster'
+html_theme = 'sphinx_book_theme'
 #html_theme = 'sphinx_needs_pdf'
 html_static_path = ['_static']
 
@@ -59,7 +72,7 @@ html_theme_options = {
 
 html_context = {
     'docs_scope': 'external',
-    'cover_logo_title': '',
+    'cover_logo_title': '<img src="_static/Logo_ESCAD_mTag_E_RGB.png"',
     'cover_meta_data': 'The simple PDF builder for Sphinx.',
     'cover_footer': f'Build: {datetime.datetime.now().strftime("%d.%m.%Y")}<br>'
                     f'Maintained by <a href="https://useblocks.com">team useblocks</a>',

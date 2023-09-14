@@ -28,7 +28,7 @@ chosen builder name. The argument is case-insensitive.
 
 .. code-block:: rst
 
-   .. if-builder:: simplepdf
+   .. if-builder:: escaddocs
 
       .. toctree::
 
@@ -46,7 +46,7 @@ chosen builder name. The argument is case-insensitive.
 .. code-block:: bash
 
    # Call examples
-   make simplepdf
+   make escaddocs
    sphinx-build -M html . _build
 
 .. warning::

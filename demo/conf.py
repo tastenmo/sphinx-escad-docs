@@ -22,7 +22,7 @@ author = 'Martin Heubuch'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx_simplepdf',
+    'sphinx_escaddocs',
     'sphinxcontrib.plantuml',
     'sphinx_needs',
     'sphinx.ext.autodoc',
@@ -62,7 +62,8 @@ simplepdf_file_name = 'ESCAD-Document-template.pdf'
 simplepdf_vars = {
     'cover-overlay': 'rgba(84, 84, 84, 0.7)',
     'primary-opaque': 'rgba(211, 77, 40, 0.7)',
-   # 'cover-bg': 'url(frog.jpg) no-repeat center',
+    'cover-logo' : 'url(Logo_ESCAD_mTag_E_RGB.png) no-repeat left center',
+    'cover-bg': 'url(230117_Escad-Messe23-D_kupfer.jpg) no-repeat left',
     'primary': '#d34c27',
     'secondary': '#54bfd3',
     'cover': '#ffffff',
@@ -79,8 +80,10 @@ simplepdf_vars = {
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+html_theme = 'escaddocs_theme'
 html_static_path = ['_static']
+
+html_logo = './_static/REscad.svg'
 
 html_context = {
     'docs_scope': 'external',

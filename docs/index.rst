@@ -1,17 +1,15 @@
-.. sphinx-simplepdf documentation master file, created by
-   sphinx-quickstart on Wed Aug 17 12:50:37 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. sphinx-escad-docs documentation
 
-Sphinx-SimplePDF
-================
 
-This Sphinx extension provides an easy way to build beautiful PDFs based on CSS rules.
+Sphinx-escad-docs
+==================
+
+This Sphinx extension provides an easy way to build html and PDF documents.
 
 It contains:
 
- * A PDF specific, CSS based Sphinx theme: ``sphinx_simplepdf``.
- * A Sphinx builder, called ``simplepdf``
+ * A PDF specific, CSS based basic Sphinx theme: ``sphinx_escaddocs``.
+ * A Sphinx builder, called ``escaddocs``
  * :ref:`Directives <directives>` to
 
    * control different structures and content for ``HTML`` and ``PDF`` builds.
@@ -27,26 +25,34 @@ It is using `weasyprint <https://weasyprint.org/>`__ as PDF generator.
     It is not bug free and documentation is also missing some minor stuff.
     You can help us to make it better by reporting bugs or by providing code/docs
     changes via a PR.
-    The code is available on github: `useblocks/sphinx-simplepdf <https://github.com/useblocks/sphinx-simplepdf>`__
+    
+    The code is available on github: `tastenmo/sphinx-escad-docs <https://github.com/tastenmo/sphinx-escad-docs.git>`__
+    
+    A mirror is available on csvn: `Docs/sphinx-escad-docs <http://csvn:3000/Docs/sphinx-escad-docs.git>`__
+
 
 
 Showcase
 --------
-| **Sphinx-SimplePDF Documentation**
+| **Sphinx-escad-docs Documentation**
 | The PDF is based on the current HTML documentation.
-| :download:`Download PDF </_static/Sphinx-SimplePDF.pdf>`
+| :download:`Download PDF </_static/Sphinx-Escad-docs.pdf>`
 
-.. pdf-include:: _static/Sphinx-SimplePDF.pdf#view=Fit
+.. if-builder:: html
+
+    .. pdf-include:: _static/Sphinx-Escad-docs.pdf#view=Fit
 
 
 | **Sphinx-SimplePDF Demo**
 | A PDF containing different content types to check the handling of them by Sphinx-SimplePDF.
-| :download:`Download PDF </_static/Sphinx-SimplePDF-DEMO.pdf>`
+| :download:`Download PDF </_static/ESCAD-Document-template.pdf>`
 
-.. pdf-include:: _static/Sphinx-SimplePDF-DEMO.pdf#view=Fit
+.. if-builder:: html
+
+    .. pdf-include:: _static/ESCAD-Document-template.pdf#view=Fit
 
 
-.. if-builder:: simplepdf
+.. if-builder:: escaddocs
 
     .. toctree::
 

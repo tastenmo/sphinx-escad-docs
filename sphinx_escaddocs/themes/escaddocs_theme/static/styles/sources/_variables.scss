@@ -13,6 +13,7 @@ $links: config('links', '#961a1a')  !default;
 // Images
 $cover-bg: config('cover-bg', '#961a1a');
 $cover-overlay: config('cover-overlay', 'rgba(0,0,0,0)');
+$cover-logo: config('cover-logo', '#961a1a');
 
 // pdf header content
 $top-left-content: config('top-left-content', 'counter(page)') !default;

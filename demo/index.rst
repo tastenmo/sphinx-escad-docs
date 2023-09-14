@@ -1,4 +1,4 @@
-Demo Sphinx-SimplePDF
+Demo ESCAD basic theme
 =====================
 
 This PDF contains examples and test-data for different documentation and layout elements.
