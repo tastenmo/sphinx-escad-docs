@@ -10,7 +10,7 @@ import os
 import sphinx
 import datetime
 
-project = 'Sphinx-Escad-docs'
+project = 'DOCUMENTATION'
 copyright = '2023, ESCAD Automation GmbH'
 author = 'Martin Heubuch'
 
@@ -18,7 +18,7 @@ author = 'Martin Heubuch'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx_simplepdf',
+    'sphinx_escaddocs',
     'sphinxcontrib.plantuml',
     'sphinx_needs',
     'sphinx_copybutton',
@@ -33,19 +33,23 @@ plantuml_output_format = "svg_img"
 local_plantuml_path = os.path.join(os.path.dirname(__file__), "utils", "plantuml.jar")
 plantuml = f"java -Djava.awt.headless=true -jar {local_plantuml_path}"
 
+simplepdf_theme = 'escaddocs_theme'
+
+simplepdf_file_name = 'Sphinx-ESCAD-docs.pdf'
+
 simplepdf_vars = {
     'cover-overlay': 'rgba(84, 84, 84, 0.7)',
     'primary-opaque': 'rgba(211, 77, 40, 0.7)',
-    'cover-bg': 'url(230117_Header_ESCAD_Deutschland.jpg) no-repeat center',
+    'cover-bg': 'url(BackgroundReportA4.png) no-repeat center',
     'primary': '#d34c27',
     'secondary': '#54bfd3',
     'cover': '#ffffff',
     'white': '#ffffff',
-    'links': '#1a961a',
+    'links': '#54bfd3',
     'top-left-content': 'url(REscad.svg) no-repeat left center',
-    'top-center-content': '"ESCAD Document template"',
-    'top-right-content': '',
-    'bottom-left-content': '"ESCAD-Document-template.pdf"',
+    'top-center-content': '',
+    'top-right-content': '"Sphinx-ESCAD-docs Manual"',
+    'bottom-left-content': '"Sphinx-ESCAD-docs.pdf"',
     'bottom-center-content': '',
     'bottom-right-content': 'counter(page)',
 }
@@ -62,21 +66,27 @@ html_theme = 'sphinx_book_theme'
 #html_theme = 'sphinx_needs_pdf'
 html_static_path = ['_static']
 
+html_logo = './_static/REscad.svg'
+
 html_theme_options = {
-    'github_user': 'useblocks',
-    'github_repo': 'sphinx-simplepdf',
+    'github_user': 'tastenmo',
+    'github_repo': 'sphinx-escad-docs',
     'fixed_sidebar': True,
     'github_banner': True,
     'github_button': False,
 }
 
-html_context = {
+html_context = {   
     'docs_scope': 'external',
-    'cover_logo_title': '<img src="_static/Logo_ESCAD_mTag_E_RGB.png"',
-    'cover_meta_data': 'The simple PDF builder for Sphinx.',
+    'cover_logo_title': '',
+    'cover_meta_data': 'Sphinx-ESCAD-docs manual',
     'cover_footer': f'Build: {datetime.datetime.now().strftime("%d.%m.%Y")}<br>'
-                    f'Maintained by <a href="https://useblocks.com">team useblocks</a>',
-}
+                    f'Maintained by <a href="https://www.escad.de">ESCAD Automation GmbH</a>',                                                              
+    'authors' : [
+        ("Martin Heubuch", "Softwareentwicklung", "martin.heubuch@escad.de"),
+        ("Thomas Strohmaier", "Softwareentwicklung", "thomas.strohmaier@escad.de"),
+        ("", "", "")
+    ]} 
 
 
 def setup_jquery(app, exception):

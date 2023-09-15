@@ -2,96 +2,66 @@
     width: 100%;
     height: 297mm;
 
-    align-content: space-between;
+    align-content: flex-start;
     display: flex;
     flex-wrap: wrap;
 
-    margin-top: 10mm;
+    //margin-left: 1.5cm;
 
-    
 
-    h1 {
-        font-family: "Work Sans", sans-serif;
-        color: $primary;
-        font-size: 38pt;
+    .title-cover {
+        font-family: "Helvetica Neue LT Bold Condensed", sans-serif;
+        font-size: 50px;//38pt;
+        text-transform: uppercase;
+        color: primary;
+        background-color: white;
         page: no-chapter;
-        width: 100%;
+        width: auto;
+        margin-top: 7cm;
+        margin-left: 1.5cm;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     a {
-        color: $cover;
+        //color: $cover;
         font-weight: bolder;
     }
 
-    .container {
+    .subtitle-cover {
 
+        font-family: "Helvetica Neue LT Bold Condensed", sans-serif;
+        font-size: 24px; // 30pt;
+        text-transform: uppercase;
+        flex: 1 100%;
+        margin-top: 2cm;
+        margin-left: 1.5cm;
+        //white-space: pre-wrap;
+    }
+
+    .meta {
+
+        font-family: 'Helvetica Neue LT Roman';
+        font-size: 16px;
+        margin-left: 1.5cm;
+    //    margin-bottom: 2cm;
+
+    }
+
+    .cover-footer {
+        font-family: 'Helvetica Neue LT Roman';
+        font-size: 12px;
+        margin-top: 3px;
+        position: absolute;
+        bottom: 30pt;
+        //color: $white;
         width: 100%;
-        height: 100%;
 
-        break-inside: avoid;
-
-        //background: $cover-overlay;
-        .logo {
-
-            background: $cover-logo;
-            background-size: contain;
-            width: 100%;
-            height: 16mm;
-            margin-left: 2cm;
-
-        }
-
-        .title-cover {
-                width: auto;
-
-                margin-top: 50%;
-                margin-left: 2cm;
- 
-                padding-left: 15px;
-                padding-right: 15px;
-
-                font-family: "Helvetica Neue LT Bold Condensed", sans-serif;
-                font-size: 40pt;
-                text-transform: uppercase;
-                color: $primary;
-                background-color: white;
-
-            }
-
-        .subtitle-cover {
-
-            font-family: "Helvetica Neue LT Bold Condensed", sans-serif;
-            font-size: 30pt;
-            text-transform: uppercase;
-            margin-top: 0.5cm;
-            margin-left: 2cm;
-
-        }
-
-        .meta {
-
-            font-family: 'Helvetica Neue LT Roman';
-            font-size: 18pt;
-            margin-top: 1cm;
-            margin-left: 2cm;
-
-        }
-
-
-        .cover-footer {
-            font-family: 'Helvetica Neue LT Roman';
-            font-size: 14pt;
-            margin-top: 3px;
-            position: absolute;
-            bottom: 30pt;
-            color: $white;
-            width: 100%;
-
-            p {
-                width: 80%;
-                margin: 0 auto;
-                text-align: center;
-            }
+        p {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
         }
     }
+
 }

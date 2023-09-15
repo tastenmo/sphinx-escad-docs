@@ -149,7 +149,8 @@
 
 @page:first {
   background: $cover-bg;
-  background-size: 100%;
+  background-size: cover;
+  //background-size: 100%;
   margin: 0;
 }
 
@@ -158,7 +159,7 @@
 @media screen {
   #cover {
     background: $cover-bg;
-    background-size: 100%;
+    background-size: cover;
     margin: 0;
   }
 }

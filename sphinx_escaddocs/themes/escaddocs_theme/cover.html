@@ -1,27 +1,18 @@
 <article id="cover" class="dont-break">
-  <div class="container">
+
+  <h1 class="title-cover">{{ project|striptags|e }}</h1>
+
+  <p class="subtitle-cover">{{ cover_meta_data }}</p>
+
+  <span class="meta">
+    Version {{ version }}
+  </span>
 
 
-    <div class="logo">
-      <p></p>
-    </div>
-
-
-    
-    <h1 class="title-cover">{{ project|striptags|e }}</h1>
-    
-
-    <p class="subtitle-cover">{{ cover_meta_data }}</p>
-    <span class="meta">
-      Version {{ version }}
-    </span>
-
-
-    <!-- Footer -->
-    <div class="cover-footer">
-      <p>
-        {{ cover_footer }}
-      </p>
-    </div>
+  <!-- Footer -->
+  <div class="cover-footer">
+    <p>
+      {{ cover_footer }}
+    </p>
   </div>
 </article>

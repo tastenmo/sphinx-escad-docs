@@ -40,7 +40,7 @@ html_context = {
     'cover_logo_title': '',
     'cover_meta_data': 'Demonstration of the ESCAD manual template',
     'cover_footer': f'Build: {datetime.datetime.now().strftime("%d.%m.%Y")}<br>'
-                    f'Maintained by <a href="https://useblocks.com">team useblocks</a>',                                                              
+                    f'Maintained by <a href="https://www.escad.de">ESCAD Automation GmbH</a>',                                                              
     'authors' : [
         ("Martin Heubuch", "Softwareentwicklung", "martin.heubuch@escad.de"),
         ("Thomas Strohmaier", "Softwareentwicklung", "thomas.strohmaier@escad.de"),
@@ -69,8 +69,8 @@ simplepdf_file_name = 'ESCAD_manual_template.pdf'
 simplepdf_vars = {
     'cover-overlay': 'rgba(84, 84, 84, 0.7)',
     'primary-opaque': 'rgba(211, 77, 40, 0.7)',
-    'cover-logo' : 'url(Logo_ESCAD_mTag_E_RGB.png) no-repeat left center',
-    'cover-bg': 'url(230117_Escad-Messe23-D_kupfer.jpg) no-repeat left',
+    'cover-logo' : '',
+    'cover-bg': 'url(BackgroundReportA4.png) no-repeat left',
     'primary': '#d34c27',
     'secondary': '#54bfd3',
     'cover': '#ffffff',
