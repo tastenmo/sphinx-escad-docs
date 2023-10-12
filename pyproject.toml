@@ -10,7 +10,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "3.11.5"
+python = ">=3.11,<3.13"
 Sphinx = "^7.2.6"
 weasyprint = "^60.1"
 libsass = "^0.22.0"
