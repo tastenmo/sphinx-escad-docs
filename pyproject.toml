@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "sphinx-escad-docs"
+version = "0.1.0"
+description = "A Sphinx extension to create pdf-documents with ESCAD templates"
+authors = ["heubuchm <martin.heubuch@escad.de>"]
+readme = "README.rst"
+
+packages = [
+    {include = "sphinx_escaddocs"}
+]
+
+[tool.poetry.dependencies]
+python = "3.11.5"
+Sphinx = "^7.2.6"
+weasyprint = "^60.1"
+libsass = "^0.22.0"
+beautifulsoup4 = "^4.12.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
