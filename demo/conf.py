@@ -13,7 +13,6 @@ import datetime
 
 sys.path.append(os.path.dirname(__file__))  # Needed for test_py_module
 
-# project = 'Sphinx-SimplePDF-DEMO'
 project = 'ESCAD MANUAL template'
 copyright = '2023, ESCAD Automation GmbH'
 author = 'Martin Heubuch'
@@ -60,13 +59,13 @@ html_context = {
 
 plantuml_output_format = "svg_img"
 
-simplepdf_theme = 'escaddocs_theme'
+escaddocs_theme = 'escaddocs_theme'
 
-simplepdf_debug = True
+escaddocs_debug = True
 
-simplepdf_file_name = 'ESCAD_manual_template.pdf'
+escaddocs_file_name = 'ESCAD_manual_template.pdf'
 
-simplepdf_vars = {
+escaddocs_vars = {
     'cover-overlay': 'rgba(84, 84, 84, 0.7)',
     'primary-opaque': 'rgba(211, 77, 40, 0.7)',
     'cover-logo' : '',

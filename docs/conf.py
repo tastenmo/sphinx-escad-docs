@@ -33,11 +33,11 @@ plantuml_output_format = "svg_img"
 local_plantuml_path = os.path.join(os.path.dirname(__file__), "utils", "plantuml.jar")
 plantuml = f"java -Djava.awt.headless=true -jar {local_plantuml_path}"
 
-simplepdf_theme = 'escaddocs_theme'
+escaddocs_theme = 'escaddocs_theme'
 
-simplepdf_file_name = 'Sphinx-ESCAD-docs.pdf'
+escaddocs_file_name = 'Sphinx-ESCAD-docs.pdf'
 
-simplepdf_vars = {
+escaddocs_vars = {
     'cover-overlay': 'rgba(84, 84, 84, 0.7)',
     'primary-opaque': 'rgba(211, 77, 40, 0.7)',
     'cover-bg': 'url(BackgroundReportA4.png) no-repeat center',
@@ -55,7 +55,7 @@ simplepdf_vars = {
 }
 
 # use this to force using the weasyprint python API instead of building via the binary
-# simplepdf_use_weasyprint_api = True
+# escaddocs_use_weasyprint_api = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

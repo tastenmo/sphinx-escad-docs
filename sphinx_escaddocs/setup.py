@@ -14,6 +14,18 @@ from sphinx_escaddocs.directives.pdfinclude import PdfIncludeDirective
 
 def setup(app: Sphinx) -> Dict[str, Any]:
 
+    app.add_config_value("escaddocs_vars", {}, "html", types=[dict])
+    app.add_config_value("escaddocs_file_name", None, "html", types=[str])
+    app.add_config_value("escaddocs_debug", False, "html", types=bool)
+    app.add_config_value("escaddocs_weasyprint_timeout", None, "html", types=[int])
+    app.add_config_value("escaddocs_weasyprint_retries", 0, "html", types=[int])
+    app.add_config_value("escaddocs_weasyprint_flags", None, "html", types=[list])
+    app.add_config_value("escaddocs_weasyprint_filter", [], "html", types=[list])
+    app.add_config_value("escaddocs_use_weasyprint_api", None, "html", types=[bool])
+    app.add_config_value("escaddocs_theme", "escaddocs_theme", "html", types=[str])
+    app.add_config_value("escaddocs_theme_options", {}, "html", types=[dict])
+    app.add_config_value("escaddocs_sidebars", {"**": ["localtoc.html"]}, "html", types=[dict])
+
     app.add_builder(EscadDocsBuilder)
 
     app.add_directive('if-builder', IfBuilderDirective)

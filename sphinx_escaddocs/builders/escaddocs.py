@@ -28,18 +28,18 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if self.app.config.simplepdf_theme is not None:
-            logger.info(f"Setting theme to {self.app.config.simplepdf_theme}")
-            self.app.config.html_theme = self.app.config.simplepdf_theme
+        if self.app.config.escaddocs_theme is not None:
+            logger.info(f"Setting theme to {self.app.config.escaddocs_theme}")
+            self.app.config.html_theme = self.app.config.escaddocs_theme
 
         # We need to overwrite some config values, as they are set for the normal html build, but
-        # simplepdf can normally not handle them.
-        self.app.config.html_sidebars = self.app.config.simplepdf_sidebars
-        self.app.config.html_theme_options = self.app.config.simplepdf_theme_options
+        # escaddocs can normally not handle them.
+        self.app.config.html_sidebars = self.app.config.escaddocs_sidebars
+        self.app.config.html_theme_options = self.app.config.escaddocs_theme_options
         # Sphinx would write warnings, if given options are unsupported.
 
-        # Add SimplePDf specific functions to the html_context. Mostly needed for printing debug information.
-        self.app.config.html_context["simplepdf_debug"] = self.config["simplepdf_debug"]
+        # Add escaddocs specific functions to the html_context. Mostly needed for printing debug information.
+        self.app.config.html_context["escaddocs_debug"] = self.config["escaddocs_debug"]
         self.app.config.html_context["pyd"] = DebugPython()
 
         debug_sphinx = {
@@ -48,7 +48,7 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
             "srcdir": self.app.srcdir,
             "outdir": self.app.outdir,
             "extensions": self.app.config.extensions,
-            "simple_config": {x.name: x.value for x in self.app.config if x.name.startswith("simplepdf")},
+            "simple_config": {x.name: x.value for x in self.app.config if x.name.startswith("escaddocs")},
         }
         self.app.config.html_context["spd"] = debug_sphinx
 
@@ -78,10 +78,10 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
 
         Returns: Value
         """
-        simplepdf_vars = self.app.config.simplepdf_vars
-        if name not in simplepdf_vars:
+        escaddocs_vars = self.app.config.escaddocs_vars
+        if name not in escaddocs_vars:
             return default
-        return simplepdf_vars[name]
+        return escaddocs_vars[name]
 
     def get_theme_option_var(self, name, default):
         """
@@ -94,10 +94,10 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
 
         Returns: Value
         """
-        simplepdf_theme_options = self.app.config.simplepdf_theme_options
-        if name not in simplepdf_theme_options:
+        escaddocs_theme_options = self.app.config.escaddocs_theme_options
+        if name not in escaddocs_theme_options:
             return default
-        return simplepdf_theme_options[name]
+        return escaddocs_theme_options[name]
 
     def finish(self) -> None:
         super().finish()
@@ -115,12 +115,12 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
 
         args = ["weasyprint"]
 
-        if isinstance(self.config["simplepdf_weasyprint_flags"], list) and (
-            0 < len(self.config["simplepdf_weasyprint_flags"])
+        if isinstance(self.config["escaddocs_weasyprint_flags"], list) and (
+            0 < len(self.config["escaddocs_weasyprint_flags"])
         ):
-            args.extend(self.config["simplepdf_weasyprint_flags"])
+            args.extend(self.config["escaddocs_weasyprint_flags"])
 
-        file_name = self.app.config.simplepdf_file_name or f"{self.app.config.project}.pdf"
+        file_name = self.app.config.escaddocs_file_name or f"{self.app.config.project}.pdf"
 
         args.extend(
             [
@@ -129,12 +129,12 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
             ]
         )
 
-        timeout = self.config["simplepdf_weasyprint_timeout"]
+        timeout = self.config["escaddocs_weasyprint_timeout"]
 
-        filter_list = self.config["simplepdf_weasyprint_filter"]
+        filter_list = self.config["escaddocs_weasyprint_filter"]
         filter_pattern = "(?:% s)" % "|".join(filter_list) if 0 < len(filter_list) else None
 
-        if self.config["simplepdf_use_weasyprint_api"]:
+        if self.config["escaddocs_use_weasyprint_api"]:
             doc = weasyprint.HTML(index_path)
 
             doc.write_pdf(
@@ -142,7 +142,7 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
             )
 
         else:
-            retries = self.config["simplepdf_weasyprint_retries"]
+            retries = self.config["escaddocs_weasyprint_retries"]
             success = False
             for n in range(1 + retries):
                 try:
@@ -189,23 +189,3 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
                 heading.attrs["class"] = class_attr
 
         return soup.prettify(formatter="html")
-
-
-def setup(app: Sphinx) -> Dict[str, Any]:
-    app.add_config_value("simplepdf_vars", {}, "html", types=[dict])
-    app.add_config_value("simplepdf_file_name", None, "html", types=[str])
-    app.add_config_value("simplepdf_debug", False, "html", types=bool)
-    app.add_config_value("simplepdf_weasyprint_timeout", None, "html", types=[int])
-    app.add_config_value("simplepdf_weasyprint_retries", 0, "html", types=[int])
-    app.add_config_value("simplepdf_weasyprint_flags", None, "html", types=[list])
-    app.add_config_value("simplepdf_weasyprint_filter", [], "html", types=[list])
-    app.add_config_value("simplepdf_use_weasyprint_api", None, "html", types=[bool])
-    app.add_config_value("simplepdf_theme", "simplepdf_theme", "html", types=[str])
-    app.add_config_value("simplepdf_theme_options", {}, "html", types=[dict])
-    app.add_config_value("simplepdf_sidebars", {"**": ["localtoc.html"]}, "html", types=[dict])
-    app.add_builder(EscadDocsBuilder)
-
-    return {
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
