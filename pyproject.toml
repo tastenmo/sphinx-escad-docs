@@ -7,8 +7,10 @@ readme = "README.rst"
 
 packages = [
     {include = "sphinx_escaddocs"},
-    {include = "sphinx_escaddocs/themes/escaddocs_theme"},
 ]
+
+[project.entry-points]
+"sphinx.html_themes" = { escaddocs_theme = "sphinx_escaddocs/themes/escaddocs_theme" }
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
