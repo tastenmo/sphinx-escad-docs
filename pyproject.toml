@@ -6,7 +6,8 @@ authors = ["heubuchm <martin.heubuch@escad.de>"]
 readme = "README.rst"
 
 packages = [
-    {include = "sphinx_escaddocs"}
+    {include = "sphinx_escaddocs"},
+    {include = "sphinx_escaddocs/themes/escaddocs_theme"},
 ]
 
 [tool.poetry.dependencies]

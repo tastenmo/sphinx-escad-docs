@@ -1,14 +1,1 @@
-from sphinx_escaddocs.directives.ifbuilder import IfBuilderDirective
-from sphinx_escaddocs.directives.ifinclude import IfIncludeDirective
-from sphinx_escaddocs.directives.pdfinclude import PdfIncludeDirective
-
-
-def setup(app):
-    app.add_directive('if-builder', IfBuilderDirective)
-    app.add_directive('if-include', IfIncludeDirective)
-    app.add_directive('pdf-include', PdfIncludeDirective)
-
-    return {
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
+from sphinx_escaddocs.setup import setup
