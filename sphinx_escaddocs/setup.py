@@ -1,3 +1,6 @@
+import json
+import os
+from pathlib import Path
 from typing import Any, Dict, List
 
 from sphinx.application import Sphinx
@@ -31,6 +34,14 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_directive('if-builder', IfBuilderDirective)
     app.add_directive('if-include', IfIncludeDirective)
     app.add_directive('pdf-include', PdfIncludeDirective)
+
+    here = Path(__file__).parent.resolve()
+    escaddocs_theme_path = here / "themes" / "escaddocs_theme"
+
+    app.add_html_theme("escaddocs_theme", str(escaddocs_theme_path))
+
+    #app.add_html_theme('escaddocs_theme', path.abspath(path.dirname(__file__)))
+
 
     return {
         "parallel_read_safe": True,
