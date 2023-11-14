@@ -91,9 +91,24 @@ html_static_path = ['_static']
 
 html_logo = './_static/REscad.svg'
 
+# plantuml configuration
 plantuml_output_format = "svg_img"
 local_plantuml_path = os.path.join(os.path.dirname(__file__), "../", "docs", "utils", "plantuml.jar")
 plantuml = f"java -Djava.awt.headless=true -jar {local_plantuml_path}"
+
+# sphinx-needs services
+needs_services = {
+    'github-issues': {
+        'url': 'https://api.github.com/',
+        'username': 'tastenmo',
+        'token': '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',
+        'need_type': 'spec',
+        'max_amount': 10,
+        'max_content_lines': 20,
+        'id_prefix': 'GH_ISSUE_'
+    }
+}
+
 
 imgmath_image_format = 'svg'
 

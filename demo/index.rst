@@ -15,6 +15,7 @@ their representation is not perfect or even buggy.
     lists_tables
     api
     sphinx_needs
+    gh_issues
     level1/index
     long
     images
