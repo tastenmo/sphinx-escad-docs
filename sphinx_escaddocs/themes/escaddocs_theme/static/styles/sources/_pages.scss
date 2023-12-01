@@ -43,6 +43,8 @@
     border-bottom-color: $primary-opaque;
     border-bottom-style: solid;
     border-bottom-width: 0.05cm;
+    background: $cover-logo;
+    background-size: auto 1cm;
   }
 
   @top-center {

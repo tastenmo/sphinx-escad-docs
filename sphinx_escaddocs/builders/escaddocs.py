@@ -6,6 +6,9 @@ import weasyprint
 
 import sass
 
+import logging
+import logging.handlers
+
 from bs4 import BeautifulSoup
 
 from sphinx import __version__
@@ -15,9 +18,18 @@ from sphinx.builders.singlehtml import SingleFileHTMLBuilder
 
 from sphinx_escaddocs.builders.debug import DebugPython
 
-from sphinx.util import logging
+from sphinx.util import logging as sphinx_logging
 
-logger = logging.getLogger(__name__)
+logger = sphinx_logging.getLogger(__name__)
+
+weasy_logger = weasyprint.LOGGER
+weasy_logger.setLevel(logging.DEBUG)
+weasy_logger.addHandler(sphinx_logging.NewLineStreamHandler())
+
+weasy_progress_logger = weasyprint.PROGRESS_LOGGER
+weasy_progress_logger.addHandler(sphinx_logging.NewLineStreamHandler())
+#weasy_logger.addHandler(logging.StreamHandler())
+
 
 
 class EscadDocsBuilder(SingleFileHTMLBuilder):
@@ -135,6 +147,7 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
         filter_pattern = "(?:% s)" % "|".join(filter_list) if 0 < len(filter_list) else None
 
         if self.config["escaddocs_use_weasyprint_api"]:
+            logger.info("Using weasyprint API")
             doc = weasyprint.HTML(index_path)
 
             doc.write_pdf(
