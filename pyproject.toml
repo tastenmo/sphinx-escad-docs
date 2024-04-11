@@ -10,11 +10,11 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
-Sphinx = "^7.2.6"
-weasyprint = "^60.1"
+python = ">=3.9,<4.0"
+Sphinx = ">=6.0"
+weasyprint = "^61.0"
 libsass = "^0.22.0"
-beautifulsoup4 = "^4.12.2"
+beautifulsoup4 = "^4.12.3"
 typing-extensions = "^4.8.0"
 setuptools = "^68.2.2"
 pytest-regressions = "^2.5.0"

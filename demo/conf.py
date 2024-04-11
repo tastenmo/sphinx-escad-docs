@@ -102,7 +102,7 @@ needs_services = {
     'github-issues': {
         'url': 'https://api.github.com/',
         'username': 'tastenmo',
-        'token': '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',
+        'token': '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',
         'need_type': 'spec',
         'max_amount': 10,
         'max_content_lines': 20,

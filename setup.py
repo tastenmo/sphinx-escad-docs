@@ -23,6 +23,7 @@ setup(
               'sphinx_escaddocs.builders',
               'sphinx_escaddocs.directives',
               'sphinx_escaddocs.themes/escaddocs_theme',
+              'sphinx_escaddocs.writers'
               ],
     package_data={'sphinx_escaddocs/themes/escaddocs_theme': [
         'theme.conf',

@@ -4,6 +4,8 @@ from typing import Any, Dict
 import subprocess
 import weasyprint
 
+from collections import Counter
+
 import sass
 
 import logging
@@ -19,6 +21,8 @@ from sphinx.builders.singlehtml import SingleFileHTMLBuilder
 from sphinx_escaddocs.builders.debug import DebugPython
 
 from sphinx.util import logging as sphinx_logging
+
+from sphinx_escaddocs.writers.escaddocs import EscadDocsTranslator
 
 logger = sphinx_logging.getLogger(__name__)
 
@@ -37,6 +41,8 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
     format = "html"  # Must be html instead of "pdf", otherwise plantuml has problems
     file_suffix = ".pdf"
     links_suffix = None
+
+    default_translator_class = EscadDocsTranslator
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -184,6 +190,37 @@ class EscadDocsBuilder(SingleFileHTMLBuilder):
             links = sidebar.find_all("a", class_="reference internal")
             for link in links:
                 link["href"] = link["href"].replace(f"{self.app.config.root_doc}.html", "")
+                
+            # search for duplicates
+            counts = dict(Counter([str(x).split(">")[0] for x in links]))
+            duplicates = {key: value for key, value in counts.items() if value > 1}
+
+            if duplicates:
+                print("found duplicate references in toctree attempting to fix")
+
+            for text, counter in duplicates.items():
+
+                ref = re.findall("href=\"#.*\"", str(text))
+
+                # clean href data for searching
+                cleaned_ref_toc = ref[0].replace("href=\"", "").replace("\"", "") # "#target"
+                cleaned_ref_target = ref[0].replace("href=\"#", "").replace("\"", "") # "target"
+
+                occurences = soup.find_all('section', attrs={"id": cleaned_ref_target})
+
+                # rename duplicate references, relies on fact -> order in toc is order of occurence in document
+                replace_counter = 0
+
+                for link in links:
+                    if link["href"] == cleaned_ref_toc:
+                        # edit reference in table of content
+                        link["href"] = link["href"] + "-" + str(replace_counter + 1)
+
+                        # edit target reference
+                        occurences[replace_counter]["id"] = occurences[replace_counter]["id"] + "-" + str(
+                            replace_counter + 1)
+
+                        replace_counter += 1
 
         for heading_tag in ["h1", "h2"]:
             headings = soup.find_all(heading_tag, class_="")
