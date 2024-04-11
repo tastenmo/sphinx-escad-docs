@@ -8,8 +8,11 @@
 
 import os
 import sys
+from dotenv import load_dotenv
 import sphinx
 import datetime
+
+load_dotenv()
 
 sys.path.append(os.path.dirname(__file__))  # Needed for test_py_module
 
@@ -97,12 +100,16 @@ plantuml_output_format = "svg_img"
 local_plantuml_path = os.path.join(os.path.dirname(__file__), "../", "docs", "utils", "plantuml.jar")
 plantuml = f"java -Djava.awt.headless=true -jar {local_plantuml_path}"
 
+GITHUB_ISSUES_URL = os.getenv('GITHUB_ISSUES_URL')
+GITHUB_ISSUES_USER = os.getenv('GITHUB_ISSUES_USER')
+GITHUB_ISSUES_TOKEN = os.getenv('GITHUB_ISSUES_TOKEN')
+
 # sphinx-needs services
 needs_services = {
     'github-issues': {
-        'url': 'https://api.github.com/',
-        'username': 'tastenmo',
-        'token': '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',
+        'url': GITHUB_ISSUES_URL,
+        'username': GITHUB_ISSUES_USER,
+        'token': GITHUB_ISSUES_TOKEN,
         'need_type': 'spec',
         'max_amount': 10,
         'max_content_lines': 20,

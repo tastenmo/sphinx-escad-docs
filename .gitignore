@@ -34,3 +34,4 @@ need_pie_*.png
 # Files get build on CI
 Sphinx-SimplePDF-DEMO.pdf
 Sphinx-SimplePDF.pdf
+demo/.env
