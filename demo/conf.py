@@ -26,6 +26,7 @@ extensions = [
     'sphinx_needs',
     'sphinx.ext.autodoc',
     'sphinx.ext.imgmath',
+    'myst_parser',
 
 ]
 
