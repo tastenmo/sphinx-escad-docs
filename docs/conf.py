@@ -61,20 +61,20 @@ escaddocs_vars = {
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 #html_theme = 'sphinx_immaterial'
-#html_theme = 'alabaster'
-html_theme = 'sphinx_book_theme'
+html_theme = 'alabaster'
+#html_theme = 'sphinx_book_theme'
 #html_theme = 'sphinx_needs_pdf'
 html_static_path = ['_static']
 
 html_logo = './_static/REscad.svg'
 
-html_theme_options = {
-    'github_user': 'tastenmo',
-    'github_repo': 'sphinx-escad-docs',
-    'fixed_sidebar': True,
-    'github_banner': True,
-    'github_button': False,
-}
+#html_theme_options = {
+#    'github_user': 'tastenmo',
+#    'github_repo': 'sphinx-escad-docs',
+#    'fixed_sidebar': True,
+#    'github_banner': True,
+#    'github_button': False,
+#}
 
 html_context = {   
     'docs_scope': 'external',
